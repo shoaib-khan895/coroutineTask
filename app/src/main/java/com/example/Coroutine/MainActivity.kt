@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.Coroutine
 
 import android.app.ProgressDialog
