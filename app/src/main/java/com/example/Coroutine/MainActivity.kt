@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     lateinit var progressDialog: ProgressDialog
@@ -36,25 +37,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        // Set layout for RecyclerView
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         post_details_RV.layoutManager = linearLayoutManager
 
-        postDetailsAdapter = PostDetailsAdapter(this, dataList)
-        // attach adapter
+        postDetailsAdapter = PostDetailsAdapter(dataList)
         post_details_RV.adapter = postDetailsAdapter
     }
-
-    /**
-     * Getting data from API using one of the coroutine scope
-     */
     private fun getData() {
         lifecycleScope.launch {
             val call = ApiClient.getClient.getPost()
             call.enqueue(object : retrofit2.Callback<List<DataModel>> {
                 override fun onFailure(call: retrofit2.Call<List<DataModel>>, t: Throwable) {
                     Log.i("MainActivity", "Error is ${t.localizedMessage}")
-                    Toast.makeText(this@MainActivity, "There is some error while getting post", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, "There is some error while getting data", Toast.LENGTH_SHORT).show()
                     progressDialog.dismiss()
                 }
 
@@ -75,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     private fun createProgressDialog() {
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Loading")
-        progressDialog.setMessage("Please wait while we are fetching post...")
+        progressDialog.setMessage("Please wait")
         progressDialog.setCancelable(false)
     }
 }

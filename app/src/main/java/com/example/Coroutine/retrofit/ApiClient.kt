@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-    val BASE_URL =  "https://jsonplaceholder.typicode.com/"
+    const val BASE_URL =  "https://jsonplaceholder.typicode.com/"
     val getClient: ApiInterface
         get() {
 
