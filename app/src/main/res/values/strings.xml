@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Coroutine</string>
+    <string name="post_id_placeholder">Post ID</string>
+    <string name="post_title_placeholder">Post Title</string>
+    <string name="post_body_placeholder">Post Body</string>
+</resources>
